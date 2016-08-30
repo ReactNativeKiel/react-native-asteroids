@@ -51,10 +51,10 @@ export default () => {
   // next bring in the middleware
   enhancers.push(applyMiddleware(...middleware))
 
-  // add the autoRehydrate enhancer
-  if (ReduxPersist.active) {
-    enhancers.push(autoRehydrate())
-  }
+  // // add the autoRehydrate enhancer
+  // if (ReduxPersist.active) {
+  //   enhancers.push(autoRehydrate())
+  // }
 
   // create the store!
   const store = createStore(rootReducer, compose(...enhancers))

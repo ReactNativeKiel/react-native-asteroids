@@ -10,10 +10,6 @@ import NavigationRouter from './Navigation/NavigationRouter'
 import styles from './Containers/Styles/RootStyle'
 
 export default class Root extends React.Component {
-  componentWillMount () {
-    const { dispatch } = this.props.store
-    dispatch(Actions.startup())
-  }
 
   renderApp () {
     console.disableYellowBox = !DebugSettings.yellowBox

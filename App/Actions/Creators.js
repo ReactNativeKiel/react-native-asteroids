@@ -1,21 +1,7 @@
 import Types from './Types'
-
-const attemptLogin = (username, password) =>
-  ({ type: Types.LOGIN_ATTEMPT, username, password })
-
-const loginSuccess = (username) =>
-  ({ type: Types.LOGIN_SUCCESS, username })
-
-const loginFailure = (errorCode) =>
-  ({ type: Types.LOGIN_FAILURE, errorCode })
-
-const logout = () => ({ type: Types.LOGOUT })
-
-const startup = () => ({ type: Types.STARTUP })
-
-const requestTemperature = (city) => ({ type: Types.TEMPERATURE_REQUEST, city })
-const receiveTemperature = (temperature) => ({ type: Types.TEMPERATURE_RECEIVE, temperature })
-const receiveTemperatureFailure = () => ({ type: Types.TEMPERATURE_FAILURE })
+import {
+  Dimensions,
+} from 'react-native';
 
 const setPlayerLocation = (gesture) => ({
   type: Types.SET_PLAYER,
@@ -23,17 +9,23 @@ const setPlayerLocation = (gesture) => ({
   y: gesture.y0 + gesture.dy,
 })
 
+const buildAsteroid = () => ({
+  type: Types.BUILD_ASTEROID,
+  x: Math.random() * Dimensions.get('window').width,
+  y: 0,
+  vx: Math.random() * 10 - 5,
+  vy: Math.random() * 30,
+})
+
+const moveAsteroids = () => ({
+  type: Types.MOVE_ASTEROIDS
+})
+
 /**
  Makes available all the action creators we've created.
  */
 export default {
-  attemptLogin,
-  loginSuccess,
-  loginFailure,
-  logout,
-  startup,
-  requestTemperature,
-  receiveTemperature,
-  receiveTemperatureFailure,
   setPlayerLocation,
+  buildAsteroid,
+  moveAsteroids,
 }

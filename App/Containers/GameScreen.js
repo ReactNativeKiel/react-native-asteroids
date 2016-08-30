@@ -8,6 +8,8 @@ import {
 } from 'react-native'
 import { connect } from 'react-redux'
 
+import TimerMixin from 'react-timer-mixin';
+import reactMixin from 'react-mixin';
 import { Actions as NavigationActions } from 'react-native-router-flux'
 
 import Actions from '../Actions/Creators';
@@ -58,17 +60,22 @@ class GameScreen extends React.Component {
   }
 }
 
+reactMixin(GameScreen.prototype, TimerMixin);
+
 GameScreen.propTypes = {
 }
 
 const mapStateToProps = (state) => {
   return {
+    asteroids: state.game.asteroids,
     playerX: state.game.playerX,
     playerY: state.game.playerY,
   }
 }
 
 const mapDispatchToProps = {
+  buildAsteroid: Actions.buildAsteroid,
+  moveAsteroids: Actions.moveAsteroids,
   setPlayerLocation: Actions.setPlayerLocation,
 };
 
