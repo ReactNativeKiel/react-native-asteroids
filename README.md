@@ -8,7 +8,7 @@
 This game was developed at the [React (Native) Meetup Kiel - Episode 3](http://www.meetup.com/de-DE/Kiel-React-Native-Meetup/events/232988479/).
 The goal was to build a clone of the famous asteroids game, but due to the lack of gyroscope libraries for react-native we shifted the goal to build a game where you can drag your space ship in order to avoid asteroids.
 
-## TODOs
+## ✎ TODOs
 
 - [X] Have a spaceship
 - [X] Have moving asteroids
