@@ -17,6 +17,12 @@ const requestTemperature = (city) => ({ type: Types.TEMPERATURE_REQUEST, city })
 const receiveTemperature = (temperature) => ({ type: Types.TEMPERATURE_RECEIVE, temperature })
 const receiveTemperatureFailure = () => ({ type: Types.TEMPERATURE_FAILURE })
 
+const setPlayerLocation = (gesture) => ({
+  type: Types.SET_PLAYER,
+  x: gesture.x0 + gesture.dx,
+  y: gesture.y0 + gesture.dy,
+})
+
 /**
  Makes available all the action creators we've created.
  */
@@ -28,5 +34,6 @@ export default {
   startup,
   requestTemperature,
   receiveTemperature,
-  receiveTemperatureFailure
+  receiveTemperatureFailure,
+  setPlayerLocation,
 }
