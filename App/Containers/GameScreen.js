@@ -53,7 +53,7 @@ class GameScreen extends React.Component {
 
     this.setInterval(() => {
       moveAsteroids()
-    }, 1000);
+    }, 100);
   }
 
   render () {
