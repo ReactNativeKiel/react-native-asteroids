@@ -1,7 +1,20 @@
 #  Asteroids
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](http://standardjs.com/)
 
-* Standard compliant React Native App Utilizing [Ignite](https://github.com/infinitered/ignite)
+* Standard compliant React Native Clone of the famous Asteroids game using [Ignite](https://github.com/infinitered/ignite) as a basis
+
+## 🔥 Goal
+
+This game was developed at the [React (Native) Meetup Kiel - Episode 3](http://www.meetup.com/de-DE/Kiel-React-Native-Meetup/events/232988479/).
+The goal was to build a clone of the famous asteroids game, but due to the lack of gyroscope libraries for react-native we shifted the goal to build a game where you can drag your space ship in order to avoid asteroids.
+
+## TODOs
+
+- [X] Have a spaceship
+- [X] Have moving asteroids
+- [ ] Have a colission detection
+- [ ] Have no longer to be seen asteroids removed from the game
+- [ ] Have a fluent rendering performance
 
 ## :arrow_up: How to Setup
 
