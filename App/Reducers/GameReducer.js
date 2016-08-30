@@ -4,8 +4,8 @@ import { createReducer } from 'reduxsauce'
 
 export const INITIAL_STATE = Immutable({
   asteroids: [],
-  playerX: 0,
-  playerY: 0,
+  playerX: 200,
+  playerY: 200,
 })
 
 const setPlayer = (state, action) =>

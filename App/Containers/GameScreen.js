@@ -43,8 +43,22 @@ class GameScreen extends React.Component {
     });
   }
 
+  componentDidMount() {
+    const {
+      buildAsteroid,
+      moveAsteroids,
+    } = this.props;
+
+    buildAsteroid();
+
+    this.setInterval(() => {
+      moveAsteroids()
+    }, 1000);
+  }
+
   render () {
     const {
+      asteroids,
       playerX,
       playerY,
     } = this.props;
@@ -55,6 +69,12 @@ class GameScreen extends React.Component {
           left: playerX,
           top: playerY - 130,
         }]} />
+        {Boolean(asteroids.length) && asteroids.map((asteroid, index) => (
+          <View key={`asteroid-${index}`} style={[styles.asteroid, {
+            left: asteroid.x,
+            top: asteroid.y,
+          }]} />
+        ))}
       </View>
     )
   }
