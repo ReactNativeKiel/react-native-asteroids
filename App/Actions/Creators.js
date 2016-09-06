@@ -9,7 +9,9 @@ const setPlayerLocation = (gesture) => ({
   y: gesture.y0 + gesture.dy,
 })
 
+let index = 1;
 const buildAsteroid = () => ({
+  id: index++,
   type: Types.BUILD_ASTEROID,
   x: Math.random() * Dimensions.get('window').width,
   y: 0,

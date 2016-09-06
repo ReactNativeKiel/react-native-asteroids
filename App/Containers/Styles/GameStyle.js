@@ -1,8 +1,21 @@
 import { StyleSheet } from 'react-native'
 import { Colors, Metrics, ApplicationStyles } from '../../Themes/'
 
+import {
+  Dimensions,
+} from 'react-native';
+
+const height = Dimensions.get('window').height;
+const width = Dimensions.get('window').width;
+
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
+
+  fullScreen: {
+    position: 'relative',
+    height: height - Metrics.navBarHeight,
+    width,
+  },
 
   asteroid: {
     backgroundColor: 'black',

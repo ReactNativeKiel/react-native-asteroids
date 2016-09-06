@@ -54,6 +54,10 @@ class GameScreen extends React.Component {
     this.setInterval(() => {
       moveAsteroids()
     }, 100);
+
+    this.setInterval(() => {
+      buildAsteroid();
+    }, 1000)
   }
 
   render () {
@@ -64,13 +68,13 @@ class GameScreen extends React.Component {
     } = this.props;
 
     return (
-      <View style={styles.mainContainer} {...this._panResponder.panHandlers}>
+      <View style={styles.fullScreen} {...this._panResponder.panHandlers}>
         <View style={[styles.player, {
           left: playerX,
           top: playerY - 130,
         }]} />
-        {Boolean(asteroids.length) && asteroids.map((asteroid, index) => (
-          <View key={`asteroid-${index}`} style={[styles.asteroid, {
+        {Boolean(asteroids.length) && asteroids.map(asteroid => (
+          <View key={`asteroid-${asteroid.id}`} style={[styles.asteroid, {
             left: asteroid.x,
             top: asteroid.y,
           }]} />

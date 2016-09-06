@@ -13,7 +13,7 @@ The goal was to build a clone of the famous asteroids game, but due to the lack 
 - [X] Have a spaceship
 - [X] Have moving asteroids
 - [ ] Have a colission detection
-- [ ] Have no longer to be seen asteroids removed from the game
+- [X] Have no longer to be seen asteroids removed from the game
 - [ ] Have a fluent rendering performance
 
 ## :arrow_up: How to Setup
