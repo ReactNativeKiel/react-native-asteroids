@@ -1,7 +1,8 @@
-import React, {PropTypes} from 'react'
+import React, { Component, PropTypes } from 'react'
 import {
-  PanResponder,
+  Animated,
   Image,
+  PanResponder,
   ScrollView,
   Text,
   View,
@@ -17,7 +18,13 @@ import Actions from '../Actions/Creators';
 // Styles
 import styles from './Styles/GameStyle'
 
-class GameScreen extends React.Component {
+class GameScreen extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
 
    componentWillMount() {
     const {
@@ -46,18 +53,37 @@ class GameScreen extends React.Component {
   componentDidMount() {
     const {
       buildAsteroid,
-      moveAsteroids,
     } = this.props;
 
     buildAsteroid();
-
-    this.setInterval(() => {
-      moveAsteroids()
-    }, 100);
-
     this.setInterval(() => {
       buildAsteroid();
-    }, 1000)
+    }, 1000);
+  }
+
+  componentWillReceiveProps({ asteroids }) {
+    const animations = Object.keys(this.state).map(x => parseInt(x, 10));
+    asteroids.forEach(asteroid => {
+      if (animations.includes(asteroid.id)) {
+        return; // already initialized
+      }
+
+      const newAnimation = new Animated.ValueXY();
+      this.setState({
+        [asteroid.id]: newAnimation,
+      });
+
+      Animated.timing(
+        newAnimation,
+        {
+          toValue: {
+            x: asteroid.endx,
+            y: asteroid.endy,
+          },
+          duration: 10000,
+        }
+      ).start();
+    });
   }
 
   render () {
@@ -74,10 +100,10 @@ class GameScreen extends React.Component {
           top: playerY - 130,
         }]} />
         {Boolean(asteroids.length) && asteroids.map(asteroid => (
-          <View key={`asteroid-${asteroid.id}`} style={[styles.asteroid, {
-            left: asteroid.x,
-            top: asteroid.y,
-          }]} />
+          <Animated.View key={`asteroid-${asteroid.id}`} style={[
+            styles.asteroid,
+            { transform: this.state[asteroid.id].getTranslateTransform() }
+          ]} />
         ))}
       </View>
     )
