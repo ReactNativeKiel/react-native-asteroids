@@ -67,10 +67,16 @@ const buildAsteroid = () => {
   };
 }
 
+const removeAsteroid = id => ({
+  id,
+  type: Types.REMOVE_ASTEROID,
+});
+
 /**
  Makes available all the action creators we've created.
  */
 export default {
   buildAsteroid,
+  removeAsteroid,
   setPlayerLocation,
 }

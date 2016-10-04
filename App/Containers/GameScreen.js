@@ -61,8 +61,9 @@ class GameScreen extends Component {
     }, 1000);
   }
 
-  componentWillReceiveProps({ asteroids }) {
+  componentWillReceiveProps({ asteroids, removeAsteroid }) {
     const animations = Object.keys(this.state).map(x => parseInt(x, 10));
+    console.log(asteroids.map(x => x.id));
     asteroids.forEach(asteroid => {
       if (animations.includes(asteroid.id)) {
         return; // already initialized
@@ -82,7 +83,12 @@ class GameScreen extends Component {
           },
           duration: 10000,
         }
-      ).start();
+      ).start(function() {
+        removeAsteroid(asteroid.id);
+        this.setState({
+          [asteroid.id]: undefined,
+        });
+      }.bind(this));
     });
   }
 
@@ -130,7 +136,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   buildAsteroid: Actions.buildAsteroid,
-  moveAsteroids: Actions.moveAsteroids,
+  removeAsteroid: Actions.removeAsteroid,
   setPlayerLocation: Actions.setPlayerLocation,
 };
 

@@ -17,5 +17,5 @@ export default createTypes(`
   SET_PLAYER
   MOVE_PLAYER
   BUILD_ASTEROID
-  MOVE_ASTEROIDS
+  REMOVE_ASTEROID
 `)

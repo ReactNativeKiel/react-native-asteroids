@@ -23,17 +23,13 @@ const setPlayer = (state, action) =>
 const buildAsteroid = (state, action) =>
   state.set('asteroids', state.asteroids.concat(action))
 
-const moveAsteroids = (state, action) =>
-  state.set('asteroids', state.asteroids.map(asteroid =>
-    asteroid.set('x', asteroid.x + asteroid.vx)
-            .set('y', asteroid.y + asteroid.vy)
-    ).filter(asteroid => (asteroid.x > -10 && asteroid.x < width + 10) && (asteroid.y > -10 && asteroid.y < height + 10))
-  )
+const removeAsteroid = (state, action) =>
+  state.set('asteroids', state.asteroids.filter(asteroid => asteroid.id !== action.id))
 
 // map our types to our handlers
 const ACTION_HANDLERS = {
   [Types.BUILD_ASTEROID]: buildAsteroid,
-  [Types.MOVE_ASTEROIDS]: moveAsteroids,
+  [Types.REMOVE_ASTEROID]: removeAsteroid,
   [Types.SET_PLAYER]: setPlayer,
 }
 
