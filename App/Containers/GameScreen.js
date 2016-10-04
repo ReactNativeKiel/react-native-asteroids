@@ -102,7 +102,12 @@ class GameScreen extends Component {
         {Boolean(asteroids.length) && asteroids.map(asteroid => (
           <Animated.View key={`asteroid-${asteroid.id}`} style={[
             styles.asteroid,
-            { transform: this.state[asteroid.id].getTranslateTransform() }
+            {
+              transform: this.state[asteroid.id].getTranslateTransform(),
+              top: asteroid.y,
+              left: asteroid.x,
+              position: 'absolute',
+            }
           ]} />
         ))}
       </View>
